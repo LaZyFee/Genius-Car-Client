@@ -3,8 +3,6 @@ export const setAuthToken = (user) => {
     const currentUser = {
         email: user.email
     }
-
-
     fetch('https://genius-car-server-nine-phi.vercel.app/jwt', {
         method: 'POST',
         headers: {
@@ -14,7 +12,6 @@ export const setAuthToken = (user) => {
     })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             localStorage.setItem('genius-token', data.token)
         })
 

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { setAuthToken } from '../../API/auth';
+import toast from 'react-hot-toast';
 
 
 
@@ -22,7 +23,8 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 setAuthToken(user)
-                navigate(from, { replace: true })
+                navigate(from, { replace: true });
+                toast.success('Login Successful')
 
             })
     }
@@ -37,10 +39,13 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 const user = result.user;
-                // console.log(user);
-                setAuthToken(user)
+                setAuthToken(user);
+                navigate(from, { replace: true });
+                toast.success('Login Successful')
             })
-            .catch(error => console.log(error));
+            .catch(error => console.error(error),
+                toast.error('Login Failed, Invalid Email or Password')
+            );
     }
 
     return (

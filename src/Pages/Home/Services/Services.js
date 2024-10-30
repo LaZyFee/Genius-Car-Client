@@ -10,7 +10,6 @@ const Services = () => {
         fetch('https://genius-car-server-nine-phi.vercel.app/services')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setServices(data)
             })
     }, []);

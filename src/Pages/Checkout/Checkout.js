@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Checkout = () => {
     const { _id, title, price } = useLoaderData();
     const { user } = useContext(AuthContext);
+    const Navigate = useNavigate();
 
     const handlePlaceOrder = event => {
         event.preventDefault();
@@ -36,14 +38,15 @@ const Checkout = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.acknowledged) {
-                    alert('Order placed successfully')
+                    toast.success('Order placed successfully');
                     form.reset();
-
+                    Navigate('/orders');
                 }
             })
-            .catch(er => console.error(er));
+            .catch(er => console.error(er),
+                toast.error('Something went wrong, please try again')
+            );
 
 
     }

@@ -2,18 +2,16 @@ import React, { useEffect, useState } from 'react';
 
 const OrderRow = ({ order, handleDelete, handleStatusUpdate }) => {
     const { _id, serviceName, phone, customer, price, service, status } = order;
-    const [orderService, setOrderService] = useState({})
+    const [orderService, setOrderService] = useState({});
 
     useEffect(() => {
         fetch(`https://genius-car-server-nine-phi.vercel.app/services/${service}`)
             .then(res => res.json())
             .then(data => setOrderService(data));
-    }, [service])
-
-
+    }, [service]);
 
     return (
-        <tr>
+        <tr className="hover:bg-gray-100">
             <th>
                 <label>
                     <button onClick={() => handleDelete(_id)} className='btn btn-ghost'>X</button>
@@ -22,10 +20,8 @@ const OrderRow = ({ order, handleDelete, handleStatusUpdate }) => {
             <td>
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
-                        <div className="rounded w-24 h-24">
-                            {
-                                orderService?.img &&
-                                <img src={orderService.img} alt="Avatar Tailwind CSS Component" />}
+                        <div className="rounded w-16 h-16 sm:w-24 sm:h-24">
+                            {orderService?.img && <img src={orderService.img} alt={serviceName} className="rounded" />}
                         </div>
                     </div>
                     <div>
@@ -35,15 +31,14 @@ const OrderRow = ({ order, handleDelete, handleStatusUpdate }) => {
                 </div>
             </td>
             <td>
-                {serviceName}
-                <br />
+                <div className="text-sm">{serviceName}</div>
                 <span className="badge badge-ghost badge-sm">${price}</span>
             </td>
-            <td>Purple</td>
+            <td className="text-center">Purple</td>
             <th>
                 <button
                     onClick={() => handleStatusUpdate(_id)}
-                    className="btn btn-ghost btn-xs">{status ? status : 'pending'}</button>
+                    className="btn btn-ghost btn-xs">{status ? status : 'Pending'}</button>
             </th>
         </tr>
     );

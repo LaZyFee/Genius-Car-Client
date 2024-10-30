@@ -1,3 +1,57 @@
+# Genius Car Service
+
+Genius Car Service is a full-stack application that allows users to book car services easily. The application is built using **React** for the front end and **Express** with **MongoDB** for the back end. It provides features for user authentication, service selection, and booking.
+
+## Features
+
+- User authentication (login, signup, Google sign-in, and logout)
+- Service selection and booking
+- Responsive design with Tailwind CSS
+- Context API for state management
+- Notifications using React Hot Toast
+
+## Technologies Used
+
+- **Frontend**: React, React Router DOM, React Hot Toast, Tailwind CSS
+- **Backend**: Express.js, MongoDB `https://github.com/LaZyFee/Genius-Car-Server`
+- **Authentication**: Firebase
+- **State Management**: Create Context
+
+## Getting Started
+
+To get a local copy up and running, follow these steps:
+
+### Prerequisites
+
+- Node.js
+- MongoDB
+- Firebase account
+
+## Usage
+
+- **Login and Signup**: Users can log in or sign up using their email and password or through Google Sign-In.
+- **Service Booking**: Once logged in, users can select a service from the available options and proceed to book it.
+
+## Contributing
+
+Contributions are welcome! If you have suggestions or improvements, please fork the repository and submit a pull request.
+
+## Acknowledgements
+
+- Firebase for authentication services
+- Tailwind CSS for styling
+- React for building user interfaces
+
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/genius-car-service.git
+   cd genius-car-service
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
